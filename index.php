@@ -26,7 +26,7 @@ if (!empty($_GET['q'])) {
     <div class="navbar max-w-6xl">
       <div class="navbar-start w-full">
         <div class="flex-1">
-          <a class="text-2xl font-bold text-green-500">Cristian Vásquez</a>
+          <a href="/" class="text-2xl font-bold text-green-500">Cristian Vásquez</a>
         </div>
         <div class="dropdown dropdown-end">
           <div tabindex="0" role="button" class="btn btn-ghost md:hidden">
@@ -37,17 +37,35 @@ if (!empty($_GET['q'])) {
           <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-slate-900 rounded-box w-52">
             <?php
             $menuItems = array(
-              //"Home" => "/",
-              "Apache Friends" => "/dashboard/",
-              "FAQs" => "/dashboard/faq.html",
-              "HOW-TO Guides" => "/dashboard/howto.html",
-              "PHPInfo" => "/admin/phpinfo.php",
-              "phpMyAdmin" => "/phpmyadmin"
+              // "Home" => [
+              //   "link" => "/",
+              //   "target" => false
+              // ],
+              // "FAQs" => [
+              //   "link" => "/admin/faq",
+              //   "target" => false
+              // ],
+              // "HOW-TO Guides" => [
+              //   "link" => "/admin/howto",
+              //   "target" => false
+              // ],
+              "PHPInfo" => [
+                "link" => "/admin/phpinfo",
+                "target" => true
+              ],
+              "phpMyAdmin" => [
+                "link" => "/phpmyadmin",
+                "target" => true
+              ]
             );
             ?>
-            <?php foreach ($menuItems as $label => $link) : ?>
+            <?php foreach ($menuItems as $label => $item) : ?>
               <li class="text-xs lg:text-sm font-medium text-white">
-                <a href="<?php echo $link; ?>" class="py-4 rounded-md cursor-pointer md:relative md:no-underline before:content-[''] before:absolute before:bg-green-500 before:w-0 before:h-1 before:bottom-0 before:left-0 before:transition-all before:duration-500 before:ease-in-out hover:before:w-full" target="_blank"><?php echo $label; ?></a>
+                <a href="<?php echo $item['link']; ?>"
+                  class="py-4 rounded-md cursor-pointer md:relative md:no-underline before:content-[''] before:absolute before:bg-green-500 before:w-0 before:h-1 before:bottom-0 before:left-0 before:transition-all before:duration-500 before:ease-in-out hover:before:w-full"
+                  <?php echo $item['target'] ? 'target="_blank"' : ''; ?>>
+                  <?php echo $label; ?>
+                </a>
               </li>
             <?php endforeach; ?>
           </ul>
@@ -55,9 +73,11 @@ if (!empty($_GET['q'])) {
       </div>
       <div class="navbar-center hidden md:flex">
         <ul class="menu menu-horizontal px-1">
-          <?php foreach ($menuItems as $label => $link) : ?>
+          <?php foreach ($menuItems as $label => $item) : ?>
             <li class="text-xs lg:text-sm font-medium text-white">
-              <a href="<?php echo $link; ?>" class="py-4 rounded-md cursor-pointer md:relative md:no-underline before:content-[''] before:absolute before:bg-green-500 before:w-0 before:h-1 before:bottom-0 before:left-0 before:transition-all before:duration-500 before:ease-in-out hover:before:w-full" target="_blank"><?php echo $label; ?></a>
+              <a href="<?php echo $item['link']; ?>" class="py-4 rounded-md cursor-pointer md:relative md:no-underline before:content-[''] before:absolute before:bg-green-500 before:w-0 before:h-1 before:bottom-0 before:left-0 before:transition-all before:duration-500 before:ease-in-out hover:before:w-full" <?php echo $item['target'] ? 'target="_blank"' : ''; ?>>
+                <?php echo $label; ?>
+              </a>
             </li>
           <?php endforeach; ?>
         </ul>

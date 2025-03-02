@@ -1,0 +1,5 @@
+RewriteEngine On
+
+# Redirigir solicitudes a la carpeta views
+
+RewriteRule ^phpinfo$ views/phpinfo.php [L]
