@@ -41,7 +41,7 @@ if (!empty($_GET['q'])) {
               "Apache Friends" => "/dashboard/",
               "FAQs" => "/dashboard/faq.html",
               "HOW-TO Guides" => "/dashboard/howto.html",
-              "PHPInfo" => "/dashboard/phpinfo.php",
+              "PHPInfo" => "/admin/phpinfo.php",
               "phpMyAdmin" => "/phpmyadmin"
             );
             ?>
@@ -93,7 +93,7 @@ if (!empty($_GET['q'])) {
     $proyectos = scandir($directorio);
 
     foreach ($proyectos as $proyecto) {
-      if (is_dir("$directorio/$proyecto") && !in_array($proyecto, ['src', 'admin', '.', '..']) && substr($proyecto, 0, 1) !== '.') {
+      if (is_dir("$directorio/$proyecto") && !in_array($proyecto, ['src', 'admin', '0', '.', '..']) && substr($proyecto, 0, 1) !== '.' && substr($proyecto, 0, 1) !== '0') {
         $carpetas[] = $proyecto;
       }
     }
